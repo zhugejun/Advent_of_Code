@@ -7,53 +7,24 @@ def bfs(grid, src: tuple[int, int], dst: tuple[int, int]):
     grid[src[0]][src[1]] = "a"
     grid[dst[0]][dst[1]] = "z"
 
-    queue = deque([src])
-    visited = set()
+    queue, visited, steps = deque([src]), set(), 0
     visited.add(src)
-    steps = 0
     while queue:
         n = len(queue)
         for _ in range(n):
             r, c = queue.popleft()
             if r == dst[0] and c == dst[1]:
-                # for row in grid:
-                #     print("".join(row))
                 return steps
 
-            visited.add((r, c))
-
-            # left
-            if (
-                r - 1 >= 0
-                and ord(grid[r - 1][c]) - ord(grid[r][c]) <= 1
-                and (r - 1, c) not in visited
-            ):
-                queue.append((r - 1, c))
-
-            # up
-            if (
-                c - 1 >= 0
-                and ord(grid[r][c - 1]) - ord(grid[r][c]) <= 1
-                and (r, c - 1) not in visited
-            ):
-                queue.append((r, c - 1))
-
-            # down
-            if (
-                r + 1 <= len(grid) - 1
-                and ord(grid[r + 1][c]) - ord(grid[r][c]) <= 1
-                and (r + 1, c) not in visited
-            ):
-                queue.append((r + 1, c))
-
-            # right
-            if (
-                c + 1 <= len(grid[0]) - 1
-                and ord(grid[r][c + 1]) - ord(grid[r][c]) <= 1
-                and (r, c + 1) not in visited
-            ):
-                queue.append((r, c + 1))
-            grid[r][c] = "#"
+            for nr, nc in [(r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)]:
+                if (
+                    0 <= nr <= len(grid) - 1
+                    and 0 <= nc <= len(grid[0]) - 1
+                    and ord(grid[nr][nc]) - ord(grid[r][c]) <= 1
+                    and (nr, nc) not in visited
+                ):
+                    visited.add((nr, nc))
+                    queue.append((nr, nc))
         steps += 1
     return -1
 
