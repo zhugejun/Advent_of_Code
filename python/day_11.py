@@ -18,7 +18,7 @@ def parse_monkey(lines):
 
 
 def day11_1():
-    with open(f"data/advent2022/input11.txt", "r") as f:
+    with open(f"data/input11.txt", "r") as f:
         monkeys = [parse_monkey(m.splitlines()) for m in f.read().split("\n\n")]
         active = defaultdict(int)
 
@@ -37,7 +37,7 @@ def day11_1():
 
 
 def day11_2():
-    with open(f"data/advent2022/input11.txt", "r") as f:
+    with open(f"data/input11.txt", "r") as f:
         monkeys = [parse_monkey(m.splitlines()) for m in f.read().split("\n\n")]
         active = defaultdict(int)
         mod = prod([m["testnum"] for m in monkeys])

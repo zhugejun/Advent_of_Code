@@ -15,7 +15,7 @@ def outcome_score(my_record, other_record):
 strategy = {"X": "Rock", "Y": "Paper", "Z": "Scissors"}
 score = 0
 
-with open("./data/advent2022/input2.txt", "r") as f:
+with open("./data/input2.txt", "r") as f:
     records = [s[:-1].split(" ") for s in f.readlines()]
     for i, (other, me) in enumerate(records):
         score += outcome_score(strategy[me], decodes[other])
@@ -24,7 +24,7 @@ print(score)
 
 strategy = {"X": "lose", "Y": "draw", "Z": "win"}
 score = 0
-with open("./data/advent2022/input2.txt", "r") as f:
+with open("./data/input2.txt", "r") as f:
     records = [s[:-1].split(" ") for s in f.readlines()]
     for i, (other, me) in enumerate(records):
         if me == "X":
