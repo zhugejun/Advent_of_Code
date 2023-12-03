@@ -26,7 +26,6 @@ with open("input2.txt") as f:
     print(result)
 
 
-
 # part 2
 
 result = 0
@@ -45,11 +44,4 @@ with open("input2.txt") as f:
                 counts[color] = max(int(count), counts[color])
         result += reduce(lambda x, y: x * y, counts.values())
 
-
     print(result)
-
-
-
-
-
-

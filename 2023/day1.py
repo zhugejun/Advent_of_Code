@@ -1,4 +1,3 @@
-
 def get_first_and_last_digit(s):
     result = []
     for _, c in enumerate(s):
@@ -9,7 +8,7 @@ def get_first_and_last_digit(s):
 
 total = 0
 
-for line in open('input1.txt'):
+for line in open("input1.txt"):
     numbers = get_first_and_last_digit(line.strip())
     total += numbers[0] * 10 + numbers[-1]
 print(total)
@@ -24,10 +23,11 @@ dic = {
     "four": 4,
     "five": 5,
     "six": 6,
-    "seven":7,
+    "seven": 7,
     "eight": 8,
     "nine": 9,
 }
+
 
 def get_numbers_only(s):
     result = []
@@ -36,14 +36,13 @@ def get_numbers_only(s):
             result.append(int(c))
         else:
             for number in dic:
-                if s[i:i+len(number)] == number:
+                if s[i : i + len(number)] == number:
                     result.append(dic[number])
     return result
 
 
-
 total = 0
-for line in open('input1.txt'):
+for line in open("input1.txt"):
     line = line.strip()
     numbers = get_numbers_only(line)
     total += numbers[0] * 10 + numbers[-1]
