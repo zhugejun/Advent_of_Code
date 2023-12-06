@@ -1,6 +1,7 @@
 
 
 from functools import reduce
+import math
 from operator import mul
 
 test = """Time:      7  15   30
@@ -49,3 +50,12 @@ time =  int(lines[0].split(":")[1:][0].replace(" ", ""))
 distance = int(lines[1].split(":")[1:][0].replace(" ", ""))
 
 print(beat(time, distance))
+
+
+# optimized
+# it's a quadratic equation
+
+a = (time - math.sqrt(time ** 2 - 4 * distance)) / 2
+b = (time + math.sqrt(time ** 2 - 4 * distance)) / 2
+
+print(math.floor(b) - math.ceil(a) + 1)
