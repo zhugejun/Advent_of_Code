@@ -12,6 +12,28 @@ KTJJT 220
 QQQJA 483
 """
 
+# always good to learn from the best
+# https://github.com/oliver-ni/advent-of-code/blob/master/py/2023/day07.py
+
+
+def get_score(x):
+    match [b for _, b in Counter(x).most_common()]:
+        case 5, *_:
+            return 1
+        case 4, *_:
+            return 2
+        case 3, 2, *_:
+            return 3
+        case 3, *_:
+            return 4
+        case 2, 2, *_:
+            return 5
+        case 2, *_:
+            return 6
+        case _:
+            return 7
+
+# part 1
 
 cards = {c: i for i, c in enumerate('23456789TJQKA')}
 # print(cards)
